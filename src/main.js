@@ -30,7 +30,7 @@ var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
 
-var savedCoversSection = document.querySelector('.saved-covers-section')
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 
 // Add your event listeners here 👇
@@ -43,7 +43,7 @@ makeMyBookButton.addEventListener('click', function(){
   makeMyBook(),
   event.preventDefault()
 });
-saveCoverButton.addEventListener('click', saveCover)
+saveCoverButton.addEventListener('click', saveCover);
 
 
 // Create your event handlers and other functions here 👇
@@ -55,16 +55,23 @@ function getRandomIndex(array) {
 function saveCover(){
   if(!savedCovers.includes(currentCover)){
     savedCovers.push(currentCover)
-} 
-
-savedCoversSection.innerHTML = 
-`<section>
-  <img class="cover-image" src="${currentCover.cover}">
-  <h2 class="cover-title">${currentCover.title}</h2>
-  <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
-</section>`
-
+  }
 }
+
+function changeHTML() {
+  var newCover = document.createElement('div');
+  newCover.innerHTML =
+  `<section class="mini-cover">
+    <img class="cover-image" src="${currentCover.cover}">
+    <h2 class="cover-title">${currentCover.title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+  </section>`;
+  savedCoversSection.appendChild(newCover);  
+
+};
+
 
 function makeMyBook() {
   currentCover = new Cover(userCover.value, userTitle.value, descriptorOne.value, descriptorTwo.value)
@@ -77,7 +84,7 @@ function makeMyBook() {
   newRandomTitle.innerText = currentCover.title
   newRandomTagOne.innerText = currentCover.tagline1
   newRandomTagTwo.innerText = currentCover.tagline2
-  };
+};
 
 
 function viewSavedCovers() {
@@ -87,6 +94,7 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+  changeHTML()
 };
 
 
@@ -99,10 +107,11 @@ function viewHome() {
 };
 
 function getRandomCover() {
-newRandomCover.src = covers[getRandomIndex(covers)]
-newRandomTitle.innerText = titles[getRandomIndex(titles)]
-newRandomTagOne.innerText = descriptors[getRandomIndex(descriptors)]
-newRandomTagTwo.innerText = descriptors[getRandomIndex(descriptors)]
+currentCover = new Cover(covers[getRandomIndex(covers)],titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])  
+  newRandomCover.src = currentCover.cover
+  newRandomTitle.innerText = currentCover.title
+  newRandomTagOne.innerText = currentCover.tagline1
+  newRandomTagTwo.innerText = currentCover.tagline2
 };
 
 function changeViewToForm() {
