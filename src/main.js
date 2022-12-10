@@ -31,7 +31,7 @@ var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
 
 var savedCoversSection = document.querySelector('.saved-covers-section');
-
+var dltCover = document.querySelector('.mini-cover');
 
 // Add your event listeners here 👇
 window.addEventListener('load', getRandomCover);
@@ -44,7 +44,7 @@ makeMyBookButton.addEventListener('click', function(){
   event.preventDefault()
 });
 saveCoverButton.addEventListener('click', saveCover);
-
+savedCoversSection.addEventListener('dblclick', deleteCover);
 
 // Create your event handlers and other functions here 👇
 // We've provided one function to get you started
@@ -52,26 +52,29 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function deleteCover(){
+  console.log(savedCoversSection.parentNode)
+  // acessing mini-cover ^^
+  savedCoversSection.removeChild(event.target.parentNode);
+}
+
 function saveCover(){
   if(!savedCovers.includes(currentCover)){
     savedCovers.push(currentCover)
+    changeHTML()
   }
 }
 
 function changeHTML() {
-  var newCover = document.createElement('div');
-  newCover.innerHTML =
+  savedCoversSection.innerHTML +=
   `<section class="mini-cover">
     <img class="cover-image" src="${currentCover.cover}">
     <h2 class="cover-title">${currentCover.title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
-  </section>`;
-  savedCoversSection.appendChild(newCover);  
-
+  </section>`; 
 };
-
 
 function makeMyBook() {
   currentCover = new Cover(userCover.value, userTitle.value, descriptorOne.value, descriptorTwo.value)
@@ -94,7 +97,6 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
-  changeHTML()
 };
 
 
@@ -104,6 +106,7 @@ function viewHome() {
   homeView.classList.remove('hidden')
   randomCoverButton.classList.remove('hidden')
   saveCoverButton.classList.remove('hidden')
+  savedView.classList.add('hidden')
 };
 
 function getRandomCover() {
