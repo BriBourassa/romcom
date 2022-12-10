@@ -6,8 +6,6 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover; 
-// new Cover(userCover.value, userTitle.value, descriptorOne.value, descriptorTwo.value) 
- // make new object instance every created poster (for savin')
 
 var homeButton = document.querySelector('.home-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
@@ -53,17 +51,16 @@ function getRandomIndex(array) {
 };
 
 function deleteCover(){
-  console.log(savedCoversSection.parentNode)
-  // acessing mini-cover ^^
+  // splice - please no
   savedCoversSection.removeChild(event.target.parentNode);
-}
+};
 
 function saveCover(){
   if(!savedCovers.includes(currentCover)){
     savedCovers.push(currentCover)
     changeHTML()
   }
-}
+};
 
 function changeHTML() {
   savedCoversSection.innerHTML +=
@@ -89,7 +86,6 @@ function makeMyBook() {
   newRandomTagTwo.innerText = currentCover.tagline2
 };
 
-
 function viewSavedCovers() {
   savedView.classList.remove('hidden')
   formView.classList.add('hidden')
@@ -98,7 +94,6 @@ function viewSavedCovers() {
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
 };
-
 
 function viewHome() {
   homeButton.classList.add('hidden')
