@@ -11,6 +11,7 @@ Through gitHub they can access the repository. They can then git clone (with the
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
+<img width="1295" alt="Screen Shot 2022-12-10 at 3 01 03 PM" src="https://user-images.githubusercontent.com/111149043/206877170-d4710e83-f2cf-46b0-aecc-668a10c930f7.png">
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?) 
