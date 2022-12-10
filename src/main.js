@@ -51,7 +51,6 @@ function getRandomIndex(array) {
 };
 
 function deleteCover(){
-  // splice - please no
   savedCoversSection.removeChild(event.target.parentNode);
 };
 
