@@ -19,8 +19,8 @@ The project took roughly 20 hours while occasionally collaborating with other gr
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
-https://github.com/BriBourassa
-https://github.com/tdmburr
+[Bri Bourassa](https://github.com/BriBourassa)\
+[Trey Marshall](https://github.com/tdmburr)
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
